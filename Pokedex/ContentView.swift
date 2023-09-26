@@ -8,14 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let pokemonRepository = PokemonListRepository()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        Button("Get Async Pokemons") {
+
+        }.task {
+            await getPokemons()
         }
-        .padding()
+    }
+    
+    func getPokemons() async {
+        let pokemons = try! await pokemonRepository.fetchPokemons(url: URL(string: "https://pokeapi.co/api/v2/pokemon/?limit=60&offset=60.")!)
+        print(pokemons)
     }
 }
 

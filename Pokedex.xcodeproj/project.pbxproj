@@ -71,6 +71,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		460CA4DD2AC34315001F9124 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				460CA4E02AC343DD001F9124 /* Entity */,
+				460CA4E12AC343EA001F9124 /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		460CA4DE2AC3431A001F9124 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		460CA4DF2AC34373001F9124 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		460CA4E02AC343DD001F9124 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		460CA4E12AC343EA001F9124 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 		46A46D6B2AB8FF7D004D29E9 = {
 			isa = PBXGroup;
 			children = (
@@ -94,9 +131,12 @@
 		46A46D762AB8FF7D004D29E9 /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
-				46A46D772AB8FF7D004D29E9 /* PokedexApp.swift */,
 				46A46D792AB8FF7D004D29E9 /* ContentView.swift */,
+				46A46D772AB8FF7D004D29E9 /* PokedexApp.swift */,
 				46A46D7B2AB8FF7E004D29E9 /* Assets.xcassets */,
+				460CA4DE2AC3431A001F9124 /* Data */,
+				460CA4DD2AC34315001F9124 /* Domain */,
+				460CA4DF2AC34373001F9124 /* Presentation */,
 				46A46D7D2AB8FF7E004D29E9 /* Preview Content */,
 			);
 			path = Pokedex;
