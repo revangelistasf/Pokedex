@@ -18,23 +18,18 @@ final class DefaultFetchPokemonsUseCase: FetchPokemonsUseCase {
     private let pokemonRepository: PokemonRepository
     
     init(pokemonRepository: PokemonRepository) {
-        self.pokemonRepository = pokemonRepository
+        self.pokemonRepository = pokemonRepository 
     }
     
     func execute(
         requestValue: FetchPokemonsUseCaseRequestValue,
-        completion: @escaping (Result<[Pokemon], Error>) -> Void) {
-            pokemonRepository.fetchPokemonList(query: requestValue.query, completion: completion)
-        
+        completion: @escaping (Result<[Pokemon], Error>) -> Void
+    )  {
+        pokemonRepository.fetchPokemonList(query: requestValue.query, completion: completion)
     }
 }
 
-protocol PokemonRepository {
-    func fetchPokemonList(
-        query: PokemonQuery,
-        completion: @escaping (Result<[Pokemon], Error>) -> Void
-    )
-}
+
 
 struct FetchPokemonsUseCaseRequestValue {
     let query: PokemonQuery
