@@ -17,6 +17,8 @@
 		46B296FA2AC34DE000087C12 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B296F92AC34DE000087C12 /* Pokemon.swift */; };
 		46B296FC2AC34EF700087C12 /* FetchPokemonsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B296FB2AC34EF700087C12 /* FetchPokemonsUseCase.swift */; };
 		46B296FF2AC3698D00087C12 /* PokemonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B296FE2AC3698D00087C12 /* PokemonRepository.swift */; };
+		46B297032AC3799E00087C12 /* DefaultPokemonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B297022AC3799E00087C12 /* DefaultPokemonRepository.swift */; };
+		46B297072AC4A7B200087C12 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B297062AC4A7B200087C12 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		46B296F92AC34DE000087C12 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		46B296FB2AC34EF700087C12 /* FetchPokemonsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPokemonsUseCase.swift; sourceTree = "<group>"; };
 		46B296FE2AC3698D00087C12 /* PokemonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRepository.swift; sourceTree = "<group>"; };
+		46B297022AC3799E00087C12 /* DefaultPokemonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPokemonRepository.swift; sourceTree = "<group>"; };
+		46B297062AC4A7B200087C12 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,8 @@
 		460CA4DE2AC3431A001F9124 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				46B297002AC3780100087C12 /* Network */,
+				46B297012AC3780900087C12 /* Repository */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -145,6 +151,7 @@
 				46A46D7B2AB8FF7E004D29E9 /* Assets.xcassets */,
 				460CA4DE2AC3431A001F9124 /* Data */,
 				460CA4DD2AC34315001F9124 /* Domain */,
+				46B297042AC4A77800087C12 /* Infrastructure */,
 				460CA4DF2AC34373001F9124 /* Presentation */,
 				46A46D7D2AB8FF7E004D29E9 /* Preview Content */,
 			);
@@ -182,6 +189,37 @@
 				46B296FE2AC3698D00087C12 /* PokemonRepository.swift */,
 			);
 			path = "Repository Interfaces";
+			sourceTree = "<group>";
+		};
+		46B297002AC3780100087C12 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		46B297012AC3780900087C12 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				46B297022AC3799E00087C12 /* DefaultPokemonRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		46B297042AC4A77800087C12 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				46B297052AC4A79E00087C12 /* Network */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		46B297052AC4A79E00087C12 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				46B297062AC4A7B200087C12 /* NetworkService.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,6 +357,8 @@
 				46A46D7A2AB8FF7D004D29E9 /* ContentView.swift in Sources */,
 				46A46D782AB8FF7D004D29E9 /* PokedexApp.swift in Sources */,
 				46B296FA2AC34DE000087C12 /* Pokemon.swift in Sources */,
+				46B297032AC3799E00087C12 /* DefaultPokemonRepository.swift in Sources */,
+				46B297072AC4A7B200087C12 /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
