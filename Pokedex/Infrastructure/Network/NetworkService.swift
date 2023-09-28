@@ -48,14 +48,8 @@ final class DefaultNetworkService: NetworkService {
                 // TODO: Parse this error later
                 completion(.failure(.unexpected))
             }
-            
         }
         
         task.resume()
     }
-}
-
-enum NetworkError: Error {
-    case invalidURL
-    case unexpected
 }
