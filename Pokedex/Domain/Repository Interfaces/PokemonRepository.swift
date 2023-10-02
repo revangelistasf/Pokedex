@@ -10,6 +10,6 @@ import Foundation
 protocol PokemonRepository {
     func fetchPokemonList(
         query: PokemonQuery,
-        completion: @escaping (Result<[Pokemon], Error>) -> Void
+        completion: @escaping (Result<PokemonPagedResult, Error>) -> Void
     )
 }

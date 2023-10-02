@@ -10,20 +10,15 @@ import Foundation
 // I should split this later to this one be responsable for decode the request itself and return
 // And create a HttpClient responsable for make the request itself
 protocol NetworkService {
-    func request<T: Decodable>(endpoint: String, completion: @escaping (Result<T, NetworkError>) -> Void)
+    func request<T: Decodable>(with urlRequest: URLRequest, completion: @escaping (Result<T, NetworkError>) -> Void)
 }
 
 final class DefaultNetworkService: NetworkService {
     func request<T>(
-        endpoint: String,
+        with urlRequest: URLRequest,
         completion: @escaping (Result<T, NetworkError>) -> Void
     ) where T : Decodable {
-        guard let url = URL(string: endpoint) else {
-            completion(.failure(.invalidURL))
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if let error {
                 // TODO: Parse this error later
                 completion(.failure(.unexpected))

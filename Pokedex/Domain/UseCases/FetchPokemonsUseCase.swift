@@ -10,7 +10,7 @@ import Foundation
 protocol FetchPokemonsUseCase {
     func execute(
         requestValue: FetchPokemonsUseCaseRequestValue,
-        completion: @escaping (Result<[Pokemon], Error>) -> Void
+        completion: @escaping (Result<PokemonPagedResult, Error>) -> Void
     )
 }
 
@@ -23,7 +23,7 @@ final class DefaultFetchPokemonsUseCase: FetchPokemonsUseCase {
     
     func execute(
         requestValue: FetchPokemonsUseCaseRequestValue,
-        completion: @escaping (Result<[Pokemon], Error>) -> Void
+        completion: @escaping (Result<PokemonPagedResult, Error>) -> Void
     )  {
         pokemonRepository.fetchPokemonList(query: requestValue.query, completion: completion)
     }
@@ -36,5 +36,5 @@ struct FetchPokemonsUseCaseRequestValue {
 }
 
 struct PokemonQuery {
-    
+    let queryString: String
 }
