@@ -10,14 +10,11 @@ import Foundation
 // I should split this later to this one be responsable for decode the request itself and return
 // And create a HttpClient responsable for make the request itself
 protocol NetworkService {
-    func request<T: Decodable>(with urlRequest: URLRequest, completion: @escaping (Result<T, NetworkError>) -> Void)
+    func request(with urlRequest: URLRequest, completion: @escaping (Result<Data, NetworkError>) -> Void)
 }
 
 final class DefaultNetworkService: NetworkService {
-    func request<T>(
-        with urlRequest: URLRequest,
-        completion: @escaping (Result<T, NetworkError>) -> Void
-    ) where T : Decodable {
+    func request( with urlRequest: URLRequest, completion: @escaping (Result<Data, NetworkError>) -> Void ) {
         let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if let error {
                 // TODO: Parse this error later
@@ -36,13 +33,7 @@ final class DefaultNetworkService: NetworkService {
                 return
             }
             
-            do {
-                let response = try JSONDecoder().decode(T.self, from: data)
-                completion(.success(response))
-            } catch {
-                // TODO: Parse this error later
-                completion(.failure(.unexpected))
-            }
+            completion(.success(data))
         }
         
         task.resume()

@@ -21,7 +21,7 @@ struct ContentView: View {
     
     func getPokemons() async {
         DispatchQueue.main.async {
-            let pokemonPagedResult = pokemonRepository.fetchPokemonList(query: PokemonQuery(queryString: "https://pokeapi.co/api/v2/pokemon/?limit=60&offset=60")) { result in
+            let pokemonPagedResult = pokemonRepository.fetchPokemonList(query: PokemonQuery(page: 0, quantityResultsPerPage: 30)) { result in
                 print(result)
             }
             

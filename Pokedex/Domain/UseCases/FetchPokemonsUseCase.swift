@@ -1,10 +1,3 @@
-//
-//  GetPokemons.swift
-//  Pokedex
-//
-//  Created by Roberto Evangelista on 26/09/2023.
-//
-
 import Foundation
 
 protocol FetchPokemonsUseCase {
@@ -25,16 +18,13 @@ final class DefaultFetchPokemonsUseCase: FetchPokemonsUseCase {
         requestValue: FetchPokemonsUseCaseRequestValue,
         completion: @escaping (Result<PokemonPagedResult, Error>) -> Void
     )  {
-        pokemonRepository.fetchPokemonList(query: requestValue.query, completion: completion)
+        pokemonRepository.fetchPokemonList(query: PokemonQuery(page: requestValue.page, quantityResultsPerPage: requestValue.pokemonsPerPage)) { result in
+            
+        }
     }
 }
 
-
-
 struct FetchPokemonsUseCaseRequestValue {
-    let query: PokemonQuery
-}
-
-struct PokemonQuery {
-    let queryString: String
+    let page: Int
+    let pokemonsPerPage: Int = 30
 }
