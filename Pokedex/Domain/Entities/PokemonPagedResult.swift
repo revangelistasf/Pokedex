@@ -1,10 +1,3 @@
-//
-//  PokemonPagedResult.swift
-//  Pokedex
-//
-//  Created by Roberto Evangelista on 01/10/2023.
-//
-
 import Foundation
 
 struct PokemonPagedResult: Decodable {

@@ -1,10 +1,3 @@
-//
-//  PokemonRepository.swift
-//  Pokedex
-//
-//  Created by Roberto Evangelista on 26/09/2023.
-//
-
 import Foundation
 
 final class DefaultPokemonRepository {
@@ -20,11 +13,11 @@ extension DefaultPokemonRepository: PokemonRepository {
         query: PokemonQuery,
         completion: @escaping (Result<PokemonPagedResult, Error>) -> Void
     ) {
-        let pokemonDTO = PokemonRequestDTO(
+        let pokemonsDTO = PokemonListRequestDTO(
             offset: query.offset,
             limit: query.quantityResultsPerPage
         )
-        networkService.request(with: PokeAPIEndpoints.getPokemons(with: pokemonDTO)) { result in
+        networkService.request(with: PokeAPIEndpoints.getPokemons(with: pokemonsDTO)) { result in
             switch result {
             case .success(let success):
                 let result = try! JSONDecoder().decode(PokemonPagedResult.self, from: success)
@@ -33,5 +26,13 @@ extension DefaultPokemonRepository: PokemonRepository {
                 print(failure)
             }
         }
+    }
+    
+    func fetchPokemon(by id: Int, completion: @escaping (Result<Pokemon, Error>) -> Void) {
+        
+    }
+    
+    func fetchPokemon(by name: String, completion: @escaping (Result<Pokemon, Error>) -> Void) {
+        
     }
 }

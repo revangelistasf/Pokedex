@@ -1,6 +1,6 @@
 import Foundation
 
 struct PokemonRequestDTO: Encodable {
-    let offset: Int
-    let limit: Int
+    let id: Int?
+    let name: String?
 }

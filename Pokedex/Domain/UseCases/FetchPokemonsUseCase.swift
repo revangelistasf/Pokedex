@@ -9,6 +9,9 @@ protocol FetchPokemonsUseCase {
 
 final class DefaultFetchPokemonsUseCase: FetchPokemonsUseCase {
     private let pokemonRepository: PokemonRepository
+    private var page: Int = 0
+    private var pokemonsPerPage: Int = 30
+    private var pokemons: [Pokemon] = []
     
     init(pokemonRepository: PokemonRepository) {
         self.pokemonRepository = pokemonRepository 
@@ -18,13 +21,25 @@ final class DefaultFetchPokemonsUseCase: FetchPokemonsUseCase {
         requestValue: FetchPokemonsUseCaseRequestValue,
         completion: @escaping (Result<PokemonPagedResult, Error>) -> Void
     )  {
-        pokemonRepository.fetchPokemonList(query: PokemonQuery(page: requestValue.page, quantityResultsPerPage: requestValue.pokemonsPerPage)) { result in
+        let query = PokemonQuery(page: page, quantityResultsPerPage: pokemonsPerPage)
+        pokemonRepository.fetchPokemonList(query: query) { [weak self] result in
+            switch result {
+            case .success(let pokemonPagedResult):
+                self?.getPokemonInfo(from: pokemonPagedResult)
+            case .failure(let error):
+                // TODO: Show error screen
+                print(error)
+            }
+        }
+    }
+    
+    private func getPokemonInfo(from pokemonPagedResults: PokemonPagedResult) {
+        for pokemonResults in pokemonPagedResults.results {
             
         }
     }
 }
 
 struct FetchPokemonsUseCaseRequestValue {
-    let page: Int
-    let pokemonsPerPage: Int = 30
+    
 }
