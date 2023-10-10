@@ -22,7 +22,7 @@ final class DefaultNetworkService: NetworkService {
                 return
             }
             
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            guard let response = response as? HTTPURLResponse, 200...299 ~= response.statusCode else {
                 // TODO: Validate status code range later
                 completion(.failure(.unexpected))
                 return
